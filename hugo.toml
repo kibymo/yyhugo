@@ -1,7 +1,7 @@
-baseurl = "https://example.com"
+baseurl = "https://yyled.netlify.app"
 enablerobotstxt = true
 paginate = 50
-timezone = "America/Los_Angeles"
+timezone = "Asia/Taipei"
 titlecasestyle = "Go"
 
 [languages.en]
