@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 380 80" role="img" aria-label="永昱 LED 照明工程">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 80" role="img" aria-label="元郁有限公司">
   <defs>
     <radialGradient id="ledGlow2" cx="50%" cy="50%" r="50%">
       <stop offset="0%"  stop-color="#FFE89A" stop-opacity="1"/>
@@ -24,11 +24,9 @@
 
   <!-- Wordmark -->
   <g transform="translate(84, 0)" font-family="'Noto Sans TC','PingFang TC','Microsoft JhengHei',system-ui,sans-serif">
-    <text x="0" y="46" font-size="34" font-weight="700" fill="#E8E6E2" letter-spacing="2">
-      永昱<tspan fill="#F5C842" font-family="Inter,system-ui,sans-serif" font-weight="600" letter-spacing="0"> LED</tspan>
-    </text>
+    <text x="0" y="46" font-size="34" font-weight="700" fill="#E8E6E2" letter-spacing="3">元郁</text>
     <text x="3" y="66" font-size="10.5" font-weight="500" fill="#A8A29E" letter-spacing="3" font-family="Inter,system-ui,sans-serif">
-      Y &amp; Y · LIGHTING ENGINEERING
+      YUAN YU CO., LTD.
     </text>
   </g>
 </svg>

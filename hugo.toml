@@ -1,5 +1,5 @@
 baseURL = 'https://yyled.netlify.app/'
-title = '永昱 LED 照明工程'
+title = '元郁有限公司'
 theme = 'yyled'
 defaultContentLanguage = 'zh-hant'
 enableRobotsTXT = true
@@ -9,7 +9,7 @@ enableRobotsTXT = true
   weight = 1
 
 [params]
-  description = '永昱 LED 照明工程 · 專業 LED 燈具設計、施工、節能規劃'
+  description = '元郁有限公司 · 專業 LED 燈具設計、施工、節能規劃'
   phone = '02-2218-2849'
   fax = '02-2218-1732'
   line_id = '@yyled'
