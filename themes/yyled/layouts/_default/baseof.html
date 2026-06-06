@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta name="theme-color" content="{{ site.Params.bg_color | default "#0F1419" }}">
+  <meta name="theme-color" content="{{ site.Params.bg_color | default "#1A1815" }}">
   <title>{{ if .IsHome }}{{ site.Title }}{{ else }}{{ printf "%s | %s" .Title site.Title }}{{ end }}</title>
   <meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{ site.Params.Description }}{{ end }}">
 
@@ -27,11 +27,12 @@
       theme: {
         extend: {
           colors: {
-            accent:  '{{ site.Params.accent_color  | default "#F5C842" }}',
-            base:    '{{ site.Params.bg_color     | default "#0F1419" }}',
-            surface: '#1A1F2E',
-            ink:     '{{ site.Params.text_color   | default "#E5E7EB" }}',
-            muted:   '#9CA3AF',
+            accent:  '{{ site.Params.accent_color   | default "#F5C842" }}',
+            base:    '{{ site.Params.bg_color      | default "#1A1815" }}',
+            surface: '{{ site.Params.surface_color | default "#25221E" }}',
+            border:  '{{ site.Params.border_color  | default "#3A352E" }}',
+            ink:     '{{ site.Params.text_color    | default "#E8E6E2" }}',
+            muted:   '#A8A29E',
           },
           fontFamily: {
             sans: ['"Noto Sans TC"', 'Inter', 'system-ui', 'sans-serif'],

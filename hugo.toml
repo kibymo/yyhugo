@@ -17,6 +17,13 @@ enableRobotsTXT = true
   address = '新北市新店區中正路 538 巷 8 號 4 樓'
   web = 'yyled.com.tw'
 
+  # Color palette - Warm Charcoal (方案 A)
+  bg_color     = '#1A1815'   # 主背景：暖炭灰（不是黑色）
+  surface_color = '#25221E'  # 卡片背景：比 bg 亮一階
+  border_color  = '#3A352E'  # 邊框：和諧暖色
+  accent_color  = '#F5C842'  # 強調：暖黃金（保留）
+  text_color    = '#E8E6E2'  # 內文：暖白（微米色）
+
 [menu]
   [[menu.main]]
     name = '作品集'
