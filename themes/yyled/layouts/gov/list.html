@@ -1,0 +1,26 @@
+{{ define "main" }}
+<section class="py-12 sm:py-16">
+  <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+    <header class="mb-10 max-w-3xl">
+      <p class="text-accent text-sm font-semibold uppercase tracking-wider mb-2">政府補助</p>
+      <h1 class="text-4xl sm:text-5xl font-bold text-ink mb-4">{{ .Title }}</h1>
+      {{ with .Description }}<p class="text-ink/70 text-lg">{{ . }}</p>{{ end }}
+    </header>
+
+    <div class="gov-content
+                [&_img]:block
+                [&_img]:mx-auto
+                [&_img]:w-full
+                [&_img]:max-w-3xl
+                [&_img]:h-auto
+                [&_img]:rounded-xl
+                [&_img]:border
+                [&_img]:border-white/5
+                [&_img]:my-6
+                [&_p]:text-center
+                [&_p]:text-ink/70">
+      {{ .Content }}
+    </div>
+  </div>
+</section>
+{{ end }}
