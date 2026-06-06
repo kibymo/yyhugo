@@ -23,9 +23,14 @@
   <meta name="twitter:description" content="{{ with .Description }}{{ . }}{{ else }}{{ site.Params.Description }}{{ end }}">
   <meta name="twitter:image" content="{{ .Permalink }}img/og-image.png">
 
-  {{/* Favicon */}}
+  {{/* Favicon — 雙 Y 原版重製（綠底 + 橘紅/深藍） */}}
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-  <link rel="apple-touch-icon" href="/favicon.svg">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="64x64" href="/icons/favicon-64.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/icons/favicon-180.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <meta name="theme-color" content="#1A1815">
 
   {{/* Tailwind CSS via Play CDN + Typography plugin */}}
   <script src="https://cdn.tailwindcss.com?plugins=typography"></script>

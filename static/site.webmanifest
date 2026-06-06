@@ -1,0 +1,25 @@
+{
+  "name": "元郁有限公司",
+  "short_name": "元郁",
+  "description": "元郁有限公司 · 專業 LED 燈具設計、施工、節能規劃",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#1A1815",
+  "theme_color": "#1A1815",
+  "lang": "zh-TW",
+  "icons": [
+    {
+      "src": "/icons/favicon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icons/favicon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
