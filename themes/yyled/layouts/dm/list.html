@@ -1,0 +1,28 @@
+{{ define "main" }}
+<section class="py-12 sm:py-16">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <header class="mb-10 max-w-3xl">
+      <p class="text-accent text-sm font-semibold uppercase tracking-wider mb-2">產品目錄</p>
+      <h1 class="text-4xl sm:text-5xl font-bold text-ink mb-4">{{ .Title }}</h1>
+      <p class="text-ink/70 text-lg">完整產品型錄下載與各系列規格一覽。</p>
+    </header>
+
+    {{ $imgs := readDir "static/dm" }}
+    {{ if $imgs }}
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      {{ range $imgs }}
+        {{ if or (strings.HasSuffix .Name ".jpg") (strings.HasSuffix .Name ".JPG") (strings.HasSuffix .Name ".png") }}
+        <a href="/dm/{{ .Name | safeURL }}" target="_blank" rel="noopener" class="group block overflow-hidden rounded-xl border border-white/5 bg-card hover:border-accent/30 transition">
+          <img src="/dm/{{ .Name | safeURL }}" alt="產品型錄" loading="lazy" class="w-full aspect-[3/4] object-cover group-hover:scale-105 transition duration-500"/>
+          <div class="p-3 flex items-center justify-between">
+            <span class="text-ink/80 text-sm truncate">{{ .Name }}</span>
+            <span class="text-accent text-xs">下載 ↗</span>
+          </div>
+        </a>
+        {{ end }}
+      {{ end }}
+    </div>
+    {{ end }}
+  </div>
+</section>
+{{ end }}

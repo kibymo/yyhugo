@@ -1,0 +1,182 @@
+{{ define "main" }}
+{{ $data := site.Data.projects }}
+{{ $slug := .Params.slug | default (replace .File.TranslationBaseName ".md" "") }}
+{{ $project := index (where $data.projects "slug" $slug) 0 }}
+
+{{ if not $project }}
+  <div class="max-w-2xl mx-auto px-4 py-20 text-center">
+    <h1 class="text-2xl font-bold text-ink mb-4">找不到這個專案</h1>
+    <a href="/works/" class="text-accent hover:underline">← 回作品集</a>
+  </div>
+{{ else }}
+
+{{/* Find category */}}
+{{ $cat := index (where $data.categories "id" $project.category) 0 }}
+
+<section>
+  {{/* Hero */}}
+  <div class="relative h-[50vh] sm:h-[60vh] overflow-hidden bg-base">
+    {{ with $project.cover }}
+    <img src="{{ . }}" alt="{{ $project.title }}" class="w-full h-full object-cover">
+    {{ end }}
+    <div class="absolute inset-0 bg-gradient-to-t from-base via-base/60 to-base/20"></div>
+    <div class="absolute bottom-0 left-0 right-0 p-6 sm:p-10">
+      <div class="max-w-7xl mx-auto">
+        {{ with $cat }}<span class="inline-block text-sm px-3 py-1 rounded-full bg-accent/20 text-accent mb-3">{{ .icon }} {{ .name }}</span>{{ end }}
+        <h1 class="text-3xl sm:text-5xl font-bold text-ink mb-2">{{ $project.title }}</h1>
+        {{ with $project.title_en }}<p class="text-base sm:text-lg text-muted">{{ . }}</p>{{ end }}
+      </div>
+    </div>
+  </div>
+</section>
+
+{{/* Project info */}}
+<section class="py-12 sm:py-16">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+      {{/* Main content */}}
+      <div class="lg:col-span-2">
+        {{ with $project.summary }}
+        <h2 class="text-2xl font-semibold text-ink mb-4">專案說明</h2>
+        <p class="text-muted leading-relaxed text-lg">{{ . }}</p>
+        {{ else }}
+        <h2 class="text-2xl font-semibold text-ink mb-4">專案說明</h2>
+        <p class="text-muted leading-relaxed">{{ $project.title }} 的 LED 照明工程實績，總共 {{ $project.photo_count }} 張施工照片紀錄。</p>
+        {{ end }}
+
+        {{/* Gallery */}}
+        <h2 class="text-2xl font-semibold text-ink mt-12 mb-6">施工照片 ({{ $project.photo_count }})</h2>
+        <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-4" id="gallery">
+          {{ range $i, $photo := $project.photos }}
+          <button
+            class="gallery-thumb group relative aspect-square overflow-hidden rounded-lg bg-surface border border-white/5 hover:border-accent/30 transition-all"
+            data-index="{{ $i }}"
+            data-src="{{ $photo }}">
+            <img src="{{ $photo }}" alt="{{ $project.title }} 照片 {{ add $i 1 }}" loading="lazy" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+            <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors flex items-center justify-center">
+              <svg class="w-8 h-8 text-white opacity-0 group-hover:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"/></svg>
+            </div>
+          </button>
+          {{ end }}
+        </div>
+      </div>
+
+      {{/* Sidebar info */}}
+      <aside class="lg:col-span-1">
+        <div class="sticky top-24 p-6 rounded-2xl bg-surface border border-white/5">
+          <h3 class="text-sm font-semibold text-accent uppercase tracking-wider mb-4">專案資訊</h3>
+          <dl class="space-y-3 text-sm">
+            {{ with $project.location }}
+            <div class="flex justify-between gap-3">
+              <dt class="text-muted">地點</dt>
+              <dd class="text-ink font-medium text-right">{{ . }}</dd>
+            </div>
+            {{ end }}
+            {{ with $project.year }}
+            <div class="flex justify-between gap-3">
+              <dt class="text-muted">年度</dt>
+              <dd class="text-ink font-medium">{{ . }}</dd>
+            </div>
+            {{ end }}
+            {{ with $project.industry }}
+            <div class="flex justify-between gap-3">
+              <dt class="text-muted">產業</dt>
+              <dd class="text-ink font-medium text-right">{{ . }}</dd>
+            </div>
+            {{ end }}
+            {{ with $project.scope }}
+            <div class="flex justify-between gap-3">
+              <dt class="text-muted">施工範圍</dt>
+              <dd class="text-ink font-medium text-right">{{ . }}</dd>
+            </div>
+            {{ end }}
+            {{ with $project.kwh_saved_pct }}
+            <div class="flex justify-between gap-3">
+              <dt class="text-muted">節能</dt>
+              <dd class="text-accent font-bold">{{ . }}%</dd>
+            </div>
+            {{ end }}
+            <div class="flex justify-between gap-3">
+              <dt class="text-muted">方案類型</dt>
+              <dd class="text-ink font-medium text-right">{{ with $cat }}{{ .name }}{{ end }}</dd>
+            </div>
+            <div class="flex justify-between gap-3">
+              <dt class="text-muted">照片數</dt>
+              <dd class="text-ink font-medium">{{ $project.photo_count }} 張</dd>
+            </div>
+          </dl>
+
+          <div class="mt-6 pt-6 border-t border-white/5 space-y-2">
+            <a href="/contact/" class="block w-full text-center px-4 py-3 rounded-full bg-accent text-base font-semibold hover:bg-accent/90 transition-colors">
+              詢問類似方案
+            </a>
+            <a href="/works/" class="block w-full text-center px-4 py-3 rounded-full bg-white/5 text-ink font-medium hover:bg-white/10 transition-colors text-sm">
+              ← 回作品集
+            </a>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+{{/* Lightbox */}}
+<div id="lightbox" class="fixed inset-0 z-50 hidden bg-black/95 backdrop-blur-sm flex items-center justify-center p-4" role="dialog" aria-modal="true">
+  <button id="lb-close" class="absolute top-4 right-4 p-2 rounded-full bg-white/10 hover:bg-white/20 text-white" aria-label="關閉">
+    <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+  </button>
+  <button id="lb-prev" class="absolute left-4 p-3 rounded-full bg-white/10 hover:bg-white/20 text-white" aria-label="上一張">
+    <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
+  </button>
+  <button id="lb-next" class="absolute right-4 p-3 rounded-full bg-white/10 hover:bg-white/20 text-white" aria-label="下一張">
+    <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+  </button>
+  <img id="lb-img" class="max-h-[85vh] max-w-[90vw] object-contain" alt="">
+  <div class="absolute bottom-4 left-1/2 -translate-x-1/2 text-white/70 text-sm" id="lb-counter"></div>
+</div>
+
+<script>
+  (function() {
+    const thumbs = document.querySelectorAll('.gallery-thumb');
+    const lb = document.getElementById('lightbox');
+    const lbImg = document.getElementById('lb-img');
+    const lbCounter = document.getElementById('lb-counter');
+    let currentIdx = 0;
+    const photos = Array.from(thumbs).map(t => ({ src: t.dataset.src, alt: t.querySelector('img').alt }));
+    const total = photos.length;
+
+    function open(idx) {
+      currentIdx = idx;
+      update();
+      lb.classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+    }
+    function close() {
+      lb.classList.add('hidden');
+      document.body.style.overflow = '';
+    }
+    function update() {
+      const p = photos[currentIdx];
+      lbImg.src = p.src;
+      lbImg.alt = p.alt;
+      lbCounter.textContent = (currentIdx + 1) + ' / ' + total;
+    }
+    function next() { currentIdx = (currentIdx + 1) % total; update(); }
+    function prev() { currentIdx = (currentIdx - 1 + total) % total; update(); }
+
+    thumbs.forEach((t, i) => t.addEventListener('click', () => open(i)));
+    document.getElementById('lb-close').addEventListener('click', close);
+    document.getElementById('lb-next').addEventListener('click', next);
+    document.getElementById('lb-prev').addEventListener('click', prev);
+    lb.addEventListener('click', e => { if (e.target === lb) close(); });
+    document.addEventListener('keydown', e => {
+      if (lb.classList.contains('hidden')) return;
+      if (e.key === 'Escape') close();
+      if (e.key === 'ArrowRight') next();
+      if (e.key === 'ArrowLeft') prev();
+    });
+  })();
+</script>
+
+{{ end }}
+{{ end }}

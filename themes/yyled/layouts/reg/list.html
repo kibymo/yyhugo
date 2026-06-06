@@ -1,0 +1,29 @@
+{{ define "main" }}
+<section class="py-12 sm:py-16">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <header class="mb-10 max-w-3xl">
+      <p class="text-accent text-sm font-semibold uppercase tracking-wider mb-2">執照 · 證書</p>
+      <h1 class="text-4xl sm:text-5xl font-bold text-ink mb-4">{{ .Title }}</h1>
+      <p class="text-ink/70 text-lg">電器承裝業執照、電氣工程工業會員證書、能源技術服務會員證書等。</p>
+    </header>
+
+    {{/* 列出 /reg/ 下的所有圖片 */}}
+    {{ $imgs := readDir "static/reg" }}
+    {{ if $imgs }}
+    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
+      {{ range $imgs }}
+        {{ if or (strings.HasSuffix .Name ".jpg") (strings.HasSuffix .Name ".JPG") (strings.HasSuffix .Name ".png") }}
+        <a href="/reg/{{ .Name | safeURL }}" target="_blank" rel="noopener" class="group block overflow-hidden rounded-xl border border-white/5 bg-card hover:border-accent/30 transition">
+          <img src="/reg/{{ .Name | safeURL }}" alt="執照證書" loading="lazy" class="w-full aspect-[3/4] object-cover group-hover:scale-105 transition duration-500"/>
+        </a>
+        {{ end }}
+      {{ end }}
+    </div>
+    {{ end }}
+
+    <div class="prose prose-invert max-w-none mt-12 text-ink/80">
+      {{ .Content }}
+    </div>
+  </div>
+</section>
+{{ end }}

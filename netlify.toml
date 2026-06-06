@@ -1,0 +1,9 @@
+[build.environment]
+GO_VERSION = "1.24.3"
+HUGO_VERSION = "0.147.3"
+NODE_VERSION = "22"
+TZ = "Asia/Taipei"
+
+[build]
+publish = "public"
+command = "git config core.quotepath false && hugo --gc --minify"

@@ -1,0 +1,5 @@
+{{/* 使用: {{< lightbox src="/cert/xxx.jpg" caption="說明" >}} */}}
+<a href="{{ .Get "src" }}" target="_blank" rel="noopener" class="inline-block my-4 group">
+  <img src="{{ .Get "src" }}" alt="{{ .Get "caption" }}" loading="lazy" class="rounded-xl border border-white/5 max-h-96 group-hover:border-accent/30 transition"/>
+  {{ with .Get "caption" }}<figcaption class="text-sm text-ink/50 mt-2 text-center">{{ . }}</figcaption>{{ end }}
+</a>

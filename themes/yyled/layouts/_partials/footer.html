@@ -1,0 +1,34 @@
+<footer class="border-t border-white/5 bg-base">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div>
+        <div class="flex items-center gap-2 mb-3">
+          <span class="w-9 h-9 rounded-lg bg-accent flex items-center justify-center text-base font-bold">Y</span>
+          <span class="font-semibold text-ink">{{ site.Title }}</span>
+        </div>
+        <p class="text-sm text-muted leading-relaxed">{{ site.Params.Description }}</p>
+      </div>
+      <div>
+        <h3 class="text-sm font-semibold text-ink mb-3">聯絡</h3>
+        <ul class="space-y-2 text-sm text-muted">
+          {{ with site.Params.phone }}<li>📞 {{ . }}</li>{{ end }}
+          {{ with site.Params.line_id }}<li>💬 LINE: {{ . }}</li>{{ end }}
+          {{ with site.Params.email }}<li>✉️ {{ . }}</li>{{ end }}
+          {{ with site.Params.address }}<li>📍 {{ . }}</li>{{ end }}
+        </ul>
+      </div>
+      <div>
+        <h3 class="text-sm font-semibold text-ink mb-3">瀏覽</h3>
+        <ul class="space-y-2 text-sm text-muted">
+          {{ range site.Menus.main }}
+          <li><a href="{{ .URL }}" class="hover:text-accent transition-colors">{{ .Name }}</a></li>
+          {{ end }}
+        </ul>
+      </div>
+    </div>
+    <div class="mt-10 pt-6 border-t border-white/5 flex flex-col sm:flex-row justify-between items-center gap-2 text-xs text-muted">
+      <p>© {{ now.Year }} {{ site.Title }}. All rights reserved.</p>
+      <p>Designed with ❤️ for 永昱 LED</p>
+    </div>
+  </div>
+</footer>

@@ -1,0 +1,19 @@
+# Hugo output
+public/
+resources/
+.hugo_build.lock
+
+# Local overrides
+*.local.toml
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
+*.swp
+
+# Test artifacts
+/tmp/

@@ -1,0 +1,66 @@
+baseURL = 'https://yyled.netlify.app/'
+title = '永昱 LED 照明工程'
+theme = 'yyled'
+defaultContentLanguage = 'zh-hant'
+enableRobotsTXT = true
+
+[languages.zh-hant]
+  languageName = '繁體中文'
+  weight = 1
+
+[params]
+  description = '永昱 LED 照明工程 · 專業 LED 燈具設計、施工、節能規劃'
+  phone = '02-2218-2849'
+  fax = '02-2218-1732'
+  line_id = '@yyled'
+  email = 'info@yyled.com.tw'
+  address = '新北市新店區中正路 538 巷 8 號 4 樓'
+  web = 'yyled.com.tw'
+
+[menu]
+  [[menu.main]]
+    name = '作品集'
+    url = '/works/'
+    weight = 10
+  [[menu.main]]
+    name = '節能案例'
+    url = '/saveproject/'
+    weight = 20
+  [[menu.main]]
+    name = 'LED 知識'
+    url = '/aboutled/'
+    weight = 30
+  [[menu.main]]
+    name = '最新消息'
+    url = '/news/'
+    weight = 40
+  [[menu.main]]
+    name = '執照證書'
+    url = '/reg/'
+    weight = 50
+  [[menu.main]]
+    name = '產品目錄'
+    url = '/dm/'
+    weight = 60
+  [[menu.main]]
+    name = '政府補助'
+    url = '/gov/'
+    weight = 70
+  [[menu.main]]
+    name = '關於我們'
+    url = '/about/'
+    weight = 80
+  [[menu.main]]
+    name = '聯絡'
+    url = '/contact/'
+    weight = 90
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+  [markup.highlight]
+    noClasses = false
+
+[imaging]
+  quality = 80

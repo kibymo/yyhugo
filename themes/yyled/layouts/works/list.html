@@ -1,0 +1,84 @@
+{{ define "main" }}
+{{ $data := site.Data.projects }}
+
+<section class="py-12 sm:py-16">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    {{/* Header */}}
+    <div class="mb-10">
+      <p class="text-accent text-sm font-semibold uppercase tracking-wider mb-2">作品集</p>
+      <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold text-ink mb-3">{{ .Title }}</h1>
+      <p class="text-muted text-lg max-w-2xl">總共 {{ len $data.projects }} 個專案、{{ len (where $data.projects "category" "general") }} 件一般方案、{{ len (where $data.projects "category" "lease") }} 件租賃方案。點進去看細節。</p>
+    </div>
+
+    {{/* Filters */}}
+    <div class="mb-8 flex flex-wrap gap-2" id="filters">
+      <button data-filter="all" class="filter-btn active px-4 py-2 rounded-full text-sm font-medium transition-colors bg-accent text-base">
+        全部 <span class="opacity-70 text-xs ml-1">{{ len $data.projects }}</span>
+      </button>
+      {{ range $data.categories }}
+      <button data-filter="cat-{{ .id }}" class="filter-btn px-4 py-2 rounded-full text-sm font-medium transition-colors bg-surface text-ink/80 hover:bg-white/10 border border-white/5">
+        {{ .icon }} {{ .name }} <span class="opacity-70 text-xs ml-1">{{ len (where $data.projects "category" .id) }}</span>
+      </button>
+      {{ end }}
+    </div>
+
+    {{/* Grid */}}
+    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6" id="project-grid">
+      {{ range $data.projects }}
+      <a href="/works/{{ .slug }}/"
+         class="project-card group relative overflow-hidden rounded-2xl bg-surface border border-white/5 hover:border-accent/30 transition-all hover:-translate-y-1"
+         data-cat="cat-{{ .category }}">
+        <div class="aspect-[4/3] overflow-hidden bg-base">
+          {{ if .cover }}
+          <img src="{{ .cover }}" alt="{{ .title }}" loading="lazy" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+          {{ end }}
+          <div class="absolute inset-0 bg-gradient-to-t from-base via-base/40 to-transparent"></div>
+        </div>
+        <div class="absolute bottom-0 left-0 right-0 p-4 sm:p-5">
+          {{ with index (where $data.categories "id" .category) 0 }}
+          <span class="inline-block text-xs px-2 py-0.5 rounded bg-accent/20 text-accent mb-1.5">{{ .name }}</span>
+          {{ end }}
+          <h3 class="text-sm sm:text-base font-semibold text-ink mb-1 line-clamp-1">{{ .title }}</h3>
+          <p class="text-xs text-muted">{{ .photo_count }} 張</p>
+        </div>
+      </a>
+      {{ end }}
+    </div>
+
+    {{/* Empty state (JS controlled) */}}
+    <div id="empty-state" class="hidden text-center py-16">
+      <p class="text-muted text-lg">沒有符合條件的作品</p>
+    </div>
+  </div>
+</section>
+
+<script>
+  // Filter functionality
+  const buttons = document.querySelectorAll('.filter-btn');
+  const cards = document.querySelectorAll('.project-card');
+  const emptyState = document.getElementById('empty-state');
+
+  buttons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const filter = btn.dataset.filter;
+      // Update active button
+      buttons.forEach(b => {
+        b.classList.remove('bg-accent', 'text-base');
+        b.classList.add('bg-surface', 'text-ink/80');
+      });
+      btn.classList.add('bg-accent', 'text-base');
+      btn.classList.remove('bg-surface', 'text-ink/80');
+      // Filter cards
+      let visible = 0;
+      cards.forEach(card => {
+        const cat = card.dataset.cat;
+        const show = filter === 'all' || cat === filter;
+        card.style.display = show ? '' : 'none';
+        if (show) visible++;
+      });
+      emptyState.classList.toggle('hidden', visible > 0);
+    });
+  });
+</script>
+
+{{ end }}

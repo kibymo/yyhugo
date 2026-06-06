@@ -1,0 +1,30 @@
+{{ define "main" }}
+<section class="py-12 sm:py-16">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <header class="mb-10 pb-6 border-b border-white/5">
+      <h1 class="text-4xl sm:text-5xl font-bold text-ink mb-3">{{ .Title }}</h1>
+      {{ with .Description }}<p class="text-ink/60 text-lg">{{ . }}</p>{{ end }}
+    </header>
+
+    <article class="prose prose-invert max-w-none
+                    prose-headings:text-ink prose-headings:font-bold
+                    prose-h1:text-3xl prose-h2:text-2xl prose-h3:text-xl
+                    prose-p:text-ink/80 prose-p:leading-relaxed
+                    prose-a:text-accent prose-a:no-underline hover:prose-a:underline
+                    prose-strong:text-ink prose-strong:font-semibold
+                    prose-li:text-ink/80
+                    prose-img:rounded-xl prose-img:border prose-img:border-white/5
+                    prose-code:text-accent prose-code:bg-base prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded
+                    prose-pre:bg-base prose-pre:border prose-pre:border-white/5
+                    prose-blockquote:border-l-accent prose-blockquote:text-ink/70
+                    prose-hr:border-white/10
+                    prose-ul:my-4 prose-ol:my-4">
+      {{ .Content }}
+    </article>
+
+    <footer class="mt-12 pt-6 border-t border-white/5 text-sm text-ink/50">
+      <a href="/works/" class="text-accent hover:underline">← 回作品集</a>
+    </footer>
+  </div>
+</section>
+{{ end }}

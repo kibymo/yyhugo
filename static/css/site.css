@@ -1,0 +1,56 @@
+/* Custom CSS for yyled-portfolio */
+
+/* Smooth scroll for anchor links */
+html { scroll-behavior: smooth; }
+
+/* Selection color */
+::selection {
+  background: rgba(245, 200, 66, 0.3);
+  color: #fff;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: #0F1419; }
+::-webkit-scrollbar-thumb { background: #2A3340; border-radius: 5px; }
+::-webkit-scrollbar-thumb:hover { background: #F5C842; }
+
+/* Line clamp */
+.line-clamp-1 {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+
+/* Image rendering optimization */
+img {
+  image-rendering: -webkit-optimize-contrast;
+}
+
+/* Lightbox transitions */
+#lightbox {
+  animation: fadeIn 0.2s ease-out;
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Touch-friendly tap targets on mobile */
+@media (max-width: 640px) {
+  button, a {
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+
+/* Focus visible for accessibility */
+*:focus-visible {
+  outline: 2px solid #F5C842;
+  outline-offset: 2px;
+}
+
+/* Print: hide floating CTAs */
+@media print {
+  .fixed.bottom-4, .fixed.bottom-6 { display: none !important; }
+}
