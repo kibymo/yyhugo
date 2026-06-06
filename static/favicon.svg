@@ -1,28 +1,48 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="元郁">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" role="img" aria-label="元郁 YY">
   <defs>
-    <radialGradient id="ledGlow" cx="50%" cy="50%" r="50%">
-      <stop offset="0%"  stop-color="#FFE89A" stop-opacity="1"/>
-      <stop offset="35%" stop-color="#F5C842" stop-opacity="0.55"/>
-      <stop offset="100%" stop-color="#F5C842" stop-opacity="0"/>
-    </radialGradient>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%"  stop-color="#1F3A1A"/>
+      <stop offset="55%" stop-color="#376130"/>
+      <stop offset="100%" stop-color="#49813C"/>
+    </linearGradient>
   </defs>
 
-  <!-- Rounded dark background -->
-  <rect width="64" height="64" rx="14" fill="#1A1815"/>
+  <!-- Forest green gradient background -->
+  <rect width="100" height="100" fill="url(#bg)"/>
 
-  <!-- Back Y (offset down-right, lower opacity for layered depth) -->
-  <g stroke="#F5C842" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none" opacity="0.28" transform="translate(2.5, 2.5)">
-    <path d="M 11 11 L 32 32 L 53 11"/>
-    <path d="M 32 32 L 32 53"/>
+  <!-- Decorative cream swooshes (top-left + bottom-right) -->
+  <g stroke="#E0E7D7" stroke-linecap="round" fill="none">
+    <path d="M 7 18 Q 17 8 30 13" stroke-width="1.6" opacity="0.85"/>
+    <path d="M 4 27 Q 11 23 19 24" stroke-width="0.9" opacity="0.5"/>
+    <path d="M 70 86 Q 80 94 92 84" stroke-width="1.6" opacity="0.85"/>
+    <path d="M 80 76 Q 86 78 94 74" stroke-width="0.9" opacity="0.5"/>
   </g>
 
-  <!-- Front Y (main, full opacity) -->
-  <g stroke="#F5C842" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none">
-    <path d="M 11 11 L 32 32 L 53 11"/>
-    <path d="M 32 32 L 32 53"/>
+  <!-- Back Y (blue), right side, offset down-right -->
+  <g transform="translate(2.5, 3)">
+    <!-- yellow/olive 3D rim (wider) -->
+    <g stroke="#9C9D70" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" fill="none">
+      <path d="M 40 22 L 58 50 L 76 22"/>
+      <path d="M 58 50 L 58 80"/>
+    </g>
+    <!-- blue Y on top -->
+    <g stroke="#5A6393" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round" fill="none">
+      <path d="M 40 22 L 58 50 L 76 22"/>
+      <path d="M 58 50 L 58 80"/>
+    </g>
   </g>
 
-  <!-- LED glow + bright filament dot at the convergence -->
-  <circle cx="32" cy="32" r="10" fill="url(#ledGlow)"/>
-  <circle cx="32" cy="32" r="3" fill="#FFF4D2"/>
+  <!-- Front Y (orange), left side, slightly up-left -->
+  <g transform="translate(-1.5, -1)">
+    <!-- yellow/olive 3D rim -->
+    <g stroke="#9C9D70" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" fill="none">
+      <path d="M 18 22 L 36 50 L 54 22"/>
+      <path d="M 36 50 L 36 80"/>
+    </g>
+    <!-- orange/rust Y on top -->
+    <g stroke="#C36237" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round" fill="none">
+      <path d="M 18 22 L 36 50 L 54 22"/>
+      <path d="M 36 50 L 36 80"/>
+    </g>
+  </g>
 </svg>
