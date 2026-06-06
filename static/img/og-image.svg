@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-label="永昱 LED 照明工程">
+  <defs>
+    <radialGradient id="ogGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%"  stop-color="#FFE89A" stop-opacity="0.55"/>
+      <stop offset="60%" stop-color="#F5C842" stop-opacity="0.18"/>
+      <stop offset="100%" stop-color="#F5C842" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="ogBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%"  stop-color="#1A1815"/>
+      <stop offset="100%" stop-color="#25221E"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#ogBg)"/>
+
+  <!-- Subtle light rays from the icon (faint diagonal stripes) -->
+  <g opacity="0.06" stroke="#F5C842" stroke-width="1" fill="none">
+    <line x1="600" y1="315" x2="50"   y2="0"/>
+    <line x1="600" y1="315" x2="50"   y2="630"/>
+    <line x1="600" y1="315" x2="1150" y2="0"/>
+    <line x1="600" y1="315" x2="1150" y2="630"/>
+    <line x1="600" y1="315" x2="600"  y2="0"/>
+    <line x1="600" y1="315" x2="600"  y2="630"/>
+    <line x1="600" y1="315" x2="0"    y2="315"/>
+    <line x1="600" y1="315" x2="1200" y2="315"/>
+  </g>
+
+  <!-- Glow halo behind the icon -->
+  <circle cx="600" cy="270" r="220" fill="url(#ogGlow)"/>
+
+  <!-- Big Y mark, centered -->
+  <g transform="translate(528, 158) scale(2.25)">
+    <g stroke="#F5C842" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" fill="none">
+      <path d="M 14 14 L 32 32"/>
+      <path d="M 50 14 L 32 32"/>
+      <path d="M 32 32 L 32 52"/>
+    </g>
+    <circle cx="32" cy="32" r="13" fill="url(#ogGlow)"/>
+    <circle cx="32" cy="32" r="4" fill="#FFF4D2"/>
+  </g>
+
+  <!-- Wordmark -->
+  <g text-anchor="middle" font-family="'Noto Sans TC','PingFang TC','Microsoft JhengHei',system-ui,sans-serif">
+    <text x="600" y="470" font-size="76" font-weight="700" fill="#E8E6E2" letter-spacing="6">
+      永昱<tspan fill="#F5C842" font-family="Inter,system-ui,sans-serif" font-weight="600" letter-spacing="2"> LED</tspan>
+    </text>
+    <text x="600" y="520" font-size="22" font-weight="500" fill="#A8A29E" letter-spacing="8" font-family="Inter,system-ui,sans-serif">
+      照 明 工 程  ·  LIGHTING ENGINEERING
+    </text>
+  </g>
+
+  <!-- Bottom tagline -->
+  <text x="600" y="585" text-anchor="middle" font-family="Inter,system-ui,sans-serif"
+        font-size="18" font-weight="400" fill="#A8A29E" letter-spacing="2" opacity="0.7">
+    yyled.com.tw
+  </text>
+</svg>

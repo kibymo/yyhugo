@@ -14,10 +14,18 @@
   <meta property="og:description" content="{{ with .Description }}{{ . }}{{ else }}{{ site.Params.Description }}{{ end }}">
   <meta property="og:url" content="{{ .Permalink }}">
   <meta property="og:site_name" content="{{ site.Title }}">
+  <meta property="og:image" content="{{ .Permalink }}img/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="永昱 LED 照明工程">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{{ if .IsHome }}{{ site.Title }}{{ else }}{{ printf "%s | %s" .Title site.Title }}{{ end }}">
+  <meta name="twitter:description" content="{{ with .Description }}{{ . }}{{ else }}{{ site.Params.Description }}{{ end }}">
+  <meta name="twitter:image" content="{{ .Permalink }}img/og-image.png">
 
-  {{/* Favicon - TODO: replace with actual logo */}}
+  {{/* Favicon */}}
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="apple-touch-icon" href="/favicon.svg">
 
   {{/* Tailwind CSS via Play CDN + Typography plugin */}}
   <script src="https://cdn.tailwindcss.com?plugins=typography"></script>

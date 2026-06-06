@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 80" role="img" aria-label="永昱 LED 照明工程">
+  <defs>
+    <radialGradient id="ledGlow2" cx="50%" cy="50%" r="50%">
+      <stop offset="0%"  stop-color="#FFE89A" stop-opacity="1"/>
+      <stop offset="35%" stop-color="#F5C842" stop-opacity="0.6"/>
+      <stop offset="100%" stop-color="#F5C842" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Icon (scaled & positioned) -->
+  <g transform="translate(0, 8)">
+    <rect width="64" height="64" rx="14" fill="#1A1815"/>
+    <g stroke="#F5C842" stroke-width="6.5" stroke-linecap="round" stroke-linejoin="round" fill="none">
+      <path d="M 14 14 L 32 32"/>
+      <path d="M 50 14 L 32 32"/>
+      <path d="M 32 32 L 32 52"/>
+    </g>
+    <circle cx="32" cy="32" r="11" fill="url(#ledGlow2)"/>
+    <circle cx="32" cy="32" r="3.5" fill="#FFF4D2"/>
+  </g>
+
+  <!-- Wordmark -->
+  <g transform="translate(80, 0)" font-family="'Noto Sans TC','PingFang TC','Microsoft JhengHei',system-ui,sans-serif">
+    <text x="0" y="46" font-size="34" font-weight="700" fill="#E8E6E2" letter-spacing="2">
+      永昱<tspan fill="#F5C842" font-family="Inter,system-ui,sans-serif" font-weight="600" letter-spacing="0"> LED</tspan>
+    </text>
+    <text x="3" y="66" font-size="10.5" font-weight="500" fill="#A8A29E" letter-spacing="3" font-family="Inter,system-ui,sans-serif">
+      LIGHTING · ENGINEERING
+    </text>
+  </g>
+</svg>
