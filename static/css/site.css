@@ -55,32 +55,44 @@ img {
   .fixed.bottom-4, .fixed.bottom-6 { display: none !important; }
 }
 
-/* Header brand & menu — 用純 CSS 寫死,避免 Tailwind Play CDN FOUC 期間變黑 */
+/* Header brand & menu — 用純 CSS 寫死,避免 Tailwind Play CDN FOUC 期間變黑
+   ⚠️ 加 !important 是必要的:Tailwind Play CDN 動態注入的 utility 會在後面
+      cascade 出更高優先級,蓋掉 site.css;inline style 在某些情境也會被吃。
+      這層是品牌視覺,優先權應該最高。 */
 :root {
   --yy-ink: #E8E6E2;
   --yy-muted: #A8A29E;
   --yy-accent: #F5C842;
 }
 
-.yy-brand-name {
-  color: var(--yy-ink);
+nav .yy-brand-name,
+nav .yy-brand-name:visited {
+  color: var(--yy-ink) !important;
   transition: color 0.2s ease;
 }
-.yy-brand-sub {
-  color: var(--yy-muted);
+nav .yy-brand-sub,
+nav .yy-brand-sub:visited {
+  color: var(--yy-muted) !important;
 }
-.group:hover .yy-brand-name { color: var(--yy-accent); }
+nav .group:hover .yy-brand-name,
+nav .group:hover .yy-brand-name:visited {
+  color: var(--yy-accent) !important;
+}
 
-.yy-menu-link {
-  color: var(--yy-ink);
+nav .yy-menu-link,
+nav .yy-menu-link:visited {
+  color: var(--yy-ink) !important;
   opacity: 0.8;
   transition: color 0.2s ease, opacity 0.2s ease, background-color 0.2s ease;
 }
-.yy-menu-link:hover {
-  opacity: 1;
+nav .yy-menu-link:hover,
+nav .yy-menu-link:focus-visible {
+  opacity: 1 !important;
   background-color: rgba(255, 255, 255, 0.05);
+  color: var(--yy-ink) !important;
 }
-.yy-menu-link.is-active {
-  color: var(--yy-accent);
-  opacity: 1;
+nav .yy-menu-link.is-active,
+nav .yy-menu-link.is-active:visited {
+  color: var(--yy-accent) !important;
+  opacity: 1 !important;
 }
