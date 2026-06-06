@@ -23,9 +23,8 @@
   <meta name="twitter:description" content="{{ with .Description }}{{ . }}{{ else }}{{ site.Params.Description }}{{ end }}">
   <meta name="twitter:image" content="{{ .Permalink }}img/og-image.png">
 
-  {{/* Favicon — 原始元郁有限公司 logo (綠底+橘紅/深藍雙 Y) */}}
+  {{/* Favicon — 小尺寸用 Y-only 版（swoosh 在 16-48px 是雜訊），大尺寸保留原圖 */}}
   <link rel="icon" type="image/x-icon" href="/favicon.ico">
-  <link rel="icon" type="image/png" href="/img/yy-logo-square.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32.png">
   <link rel="icon" type="image/png" sizes="64x64" href="/icons/favicon-64.png">
   <link rel="apple-touch-icon" sizes="180x180" href="/icons/favicon-180.png">
@@ -92,8 +91,8 @@
     {{ partial "footer.html" . }}
   </footer>
 
-  {{/* Floating LINE + Phone CTAs */}}
-  <div class="fixed bottom-4 right-4 z-50 flex flex-col gap-3 md:bottom-6 md:right-6">
+  {{/* Floating LINE + Phone CTAs — mobile menu 開啟時自動隱藏避免擋住 */}}
+  <div id="fab" class="fixed bottom-4 right-4 z-50 flex flex-col gap-3 md:bottom-6 md:right-6 transition-opacity">
     {{ with site.Params.line_id }}
     <a href="https://line.me/ti/p/~{{ . }}" target="_blank" rel="noopener"
        class="group flex items-center gap-2 rounded-full bg-[#00C300] hover:bg-[#00B000] text-white pl-3 pr-4 py-3 shadow-2xl transition-all hover:scale-105">
