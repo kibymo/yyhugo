@@ -54,3 +54,33 @@ img {
 @media print {
   .fixed.bottom-4, .fixed.bottom-6 { display: none !important; }
 }
+
+/* Header brand & menu — 用純 CSS 寫死,避免 Tailwind Play CDN FOUC 期間變黑 */
+:root {
+  --yy-ink: #E8E6E2;
+  --yy-muted: #A8A29E;
+  --yy-accent: #F5C842;
+}
+
+.yy-brand-name {
+  color: var(--yy-ink);
+  transition: color 0.2s ease;
+}
+.yy-brand-sub {
+  color: var(--yy-muted);
+}
+.group:hover .yy-brand-name { color: var(--yy-accent); }
+
+.yy-menu-link {
+  color: var(--yy-ink);
+  opacity: 0.8;
+  transition: color 0.2s ease, opacity 0.2s ease, background-color 0.2s ease;
+}
+.yy-menu-link:hover {
+  opacity: 1;
+  background-color: rgba(255, 255, 255, 0.05);
+}
+.yy-menu-link.is-active {
+  color: var(--yy-accent);
+  opacity: 1;
+}
