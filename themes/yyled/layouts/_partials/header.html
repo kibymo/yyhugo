@@ -19,19 +19,20 @@
     {{ end }}
   </ul>
 
-  {{/* Mobile menu button */}}
-  <button id="mobile-menu-btn" type="button" class="md:hidden p-2 rounded-md hover:bg-white/5" aria-label="開啟選單">
-    <svg id="icon-menu" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
-    <svg id="icon-close" class="w-6 h-6 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+  {{/* Mobile menu button — 明確指定 text-ink 避免繼承失效 */}}
+  <button id="mobile-menu-btn" type="button" class="md:hidden p-2 rounded-md text-ink hover:bg-white/10 active:bg-white/20" aria-label="開啟選單">
+    <svg id="icon-menu" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
+    <svg id="icon-close" class="w-6 h-6 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
   </button>
 </nav>
 
-{{/* Mobile menu drawer */}}
-<div id="mobile-menu" class="hidden md:hidden border-t border-white/5 bg-base/95 backdrop-blur">
+{{/* Mobile menu drawer — bg-base(全不透明) + text-ink 寫死,active 頁用 accent 強調 */}}
+<div id="mobile-menu" class="hidden md:hidden border-t border-white/10" style="background-color:#1A1815">
   <ul class="max-w-7xl mx-auto px-4 py-4 space-y-1">
+    {{ $current := . }}
     {{ range site.Menus.main }}
     <li>
-      <a href="{{ .URL }}" class="block px-3 py-3 rounded-md text-base font-medium hover:bg-white/5">
+      <a href="{{ .URL }}" class="block px-3 py-3 rounded-md text-base font-medium text-ink hover:bg-white/10 hover:text-accent transition-colors {{ if $current.IsMenuCurrent "main" . }}text-accent{{ end }}">
         {{ .Name }}
       </a>
     </li>
