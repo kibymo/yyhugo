@@ -26,13 +26,13 @@
   </button>
 </nav>
 
-{{/* Mobile menu drawer — bg-base(全不透明) + text-ink 寫死,active 頁用 accent 強調 */}}
+{{/* Mobile menu drawer — 滿版卡片式選單,文字置中避免右側留白 */}}
 <div id="mobile-menu" class="hidden md:hidden border-t border-white/10" style="background-color:#1A1815">
-  <ul class="max-w-7xl mx-auto px-4 py-4 space-y-1">
+  <ul class="max-w-7xl mx-auto px-3 py-3 space-y-1.5">
     {{ $current := . }}
     {{ range site.Menus.main }}
     <li>
-      <a href="{{ .URL }}" class="block px-3 py-3 rounded-md text-base font-medium text-ink hover:bg-white/10 hover:text-accent transition-colors {{ if $current.IsMenuCurrent "main" . }}text-accent{{ end }}">
+      <a href="{{ .URL }}" class="block py-3.5 rounded-md text-center text-base font-semibold text-ink bg-surface/60 hover:bg-surface hover:text-accent transition-colors {{ if $current.IsMenuCurrent "main" . }}text-accent bg-surface ring-1 ring-accent/40{{ end }}">
         {{ .Name }}
       </a>
     </li>
